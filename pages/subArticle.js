@@ -57,7 +57,7 @@ const ArticleImage = styled.img`
   }
 `
 const ArticleBackground = styled.div`
-  backgroun-image: url(${(props) => props.background});
+  background-image: url(${(props) => props.background});
   @media only screen and (min-width: 501px) {
     display: none;
   }
