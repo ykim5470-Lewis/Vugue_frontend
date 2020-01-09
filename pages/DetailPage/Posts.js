@@ -1,5 +1,37 @@
-import React, { Component } from "react"
+import React from "react"
 import styled from "styled-components"
+
+const Posts = ({ posts, loading }) => {
+  if (loading) {
+    return <h2>Loading...</h2>
+  }
+
+  return posts.map((post) => (
+    <>
+      <div itemprop="articleBody">
+        <ArticleLayout id={post.id}>
+          <ArticleUrlLink href={post.url}>
+            <div key={post.id}>
+              <ArticleTitle>{post.title}</ArticleTitle>
+            </div>
+            <ArticleDate date>{post.published_time}</ArticleDate>
+            <ArticleImageMarginTopDown>
+              {" "}
+              <ArticleImage src={post.image} />
+            </ArticleImageMarginTopDown>
+            <ArticleBackground background={post.image} />
+            <ArticleDsc>{post.desc}</ArticleDsc>
+            <MoreBtn>
+              <MoreBtnBox>기사보기+</MoreBtnBox>
+            </MoreBtn>
+          </ArticleUrlLink>
+        </ArticleLayout>
+      </div>
+    </>
+  ))
+}
+
+export default Posts
 
 const ArticleLayout = styled.article`
   max-width: 759px;
@@ -57,7 +89,7 @@ const ArticleImage = styled.img`
   }
 `
 const ArticleBackground = styled.div`
-  backgroun-image: url(${(props) => props.background});
+  background-image: url(${(props) => props.background});
   @media only screen and (min-width: 501px) {
     display: none;
   }
@@ -101,62 +133,3 @@ const MoreBtnBox = styled.p`
   font-family: "Roboto", "Nanum Barun Gothic", "Apple SD Gothic Neo", Sans-serif,
     Dotum, arial !important;
 `
-
-export class SubArticle extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      article: []
-    }
-  }
-
-  infiContent = () => {}
-
-  setData = () => {
-    fetch("http://localhost:3000/data/data.json")
-      .then((res) => res.json())
-      .then(
-        (res) =>
-          this.setState({
-            article: res.data
-          }),
-        () => console.log(res.data)
-      )
-  }
-
-  componentDidMount() {
-    this.setData()
-  }
-
-  render() {
-    if (!this.state.article) return <>로딩중</>
-    console.log(Object.keys(this.state.article).length)
-    const idValue = this.state.article.map((el, idx) => (
-      <>
-        <div itemprop="articleBody">
-          <ArticleLayout id={el.id}>
-            <ArticleUrlLink href={el.url} onClick={this.infiContent}>
-              <div key={idx}>
-                <ArticleTitle>{el.title}</ArticleTitle>
-              </div>
-              <ArticleDate date>{el.published_time}</ArticleDate>
-              <ArticleImageMarginTopDown>
-                {" "}
-                <ArticleImage src={el.image} />
-              </ArticleImageMarginTopDown>
-              <ArticleBackground background={el.image} />
-              <ArticleDsc>{el.desc}</ArticleDsc>
-              <MoreBtn>
-                <MoreBtnBox>기사보기+</MoreBtnBox>
-              </MoreBtn>
-            </ArticleUrlLink>
-          </ArticleLayout>
-        </div>
-      </>
-    ))
-
-    return <div>{idValue}</div>
-  }
-}
-
-export default SubArticle
