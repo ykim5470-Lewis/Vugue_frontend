@@ -2,14 +2,12 @@ import React from "react"
 import { globalStyles } from "../reset/Styles"
 import DetailPage from "./DetailPage/DetailPage"
 import Link from "next/link"
+import PracticePagination from "./PracticePagination/PracticePagination"
 
 const Home = () => (
   <>
-    <style type="text/css">{globalStyles}</style>
-    <Link href="/PracticePagination/PracticePagination">
-      <a>Pagination</a>
-    </Link>
     <DetailPage />
+    <PracticePagination />
   </>
 )
 

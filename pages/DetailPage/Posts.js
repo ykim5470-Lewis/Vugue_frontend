@@ -80,7 +80,7 @@ const ArticleImageMarginTopDown = styled.div`
 const ArticleImage = styled.img`
   border-style: none;
   vertical-align: top;
-  max-width: 100%;
+  width: 100%;
   height: auto;
 
   @media only screen and (min-width: 501px) {
