@@ -8,12 +8,11 @@ const NavWrap = styled.nav`
   justify-content: center;
 `
 
-const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
-  const pageNumbers = []
+const DetailPagination = ({ postsPerPage, totalPosts, paginate }) => {
+  const pageNumbers = Array(Math.ceil(totalPosts / postsPerPage))
+    .fill(null)
+    .map((e, i) => i + 1)
 
-  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
-    pageNumbers.push(i)
-  }
   return (
     <NavWrap>
       {pageNumbers.map((number) => (
@@ -27,4 +26,4 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   )
 }
 
-export default Pagination
+export default DetailPagination

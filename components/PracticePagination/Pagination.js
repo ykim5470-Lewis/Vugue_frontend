@@ -8,7 +8,8 @@ const NavWrap = styled.nav`
   justify-content: center;
 `
 
-const DetailPagination = ({ postsPerPage, totalPosts, paginate }) => {
+// postsPerPage는 limit이고 totalPosts는 imtes 이고 paginate는
+const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   const pageNumbers = []
 
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
@@ -27,4 +28,4 @@ const DetailPagination = ({ postsPerPage, totalPosts, paginate }) => {
   )
 }
 
-export default DetailPagination
+export default Pagination

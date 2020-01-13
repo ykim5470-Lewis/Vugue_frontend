@@ -1,26 +1,26 @@
 import React from "react"
 import styled from "styled-components"
 
-const Posts = ({ posts, loading }) => {
-  if (loading) {
-    return <h2>Loading...</h2>
-  }
+const El = (props) => {
+  const array = props.DataArray
+  console.log(array)
 
-  return posts.map((post) => (
+  if (array === undefined) return <></>
+  return array.map((el) => (
     <>
       <div itemprop="articleBody">
-        <ArticleLayout id={post.id}>
-          <ArticleUrlLink href={post.url}>
-            <div key={post.id}>
-              <ArticleTitle>{post.title}</ArticleTitle>
+        <ArticleLayout id={el.id}>
+          <ArticleUrlLink href={el.url}>
+            <div key={el.id}>
+              <ArticleTitle>{el.title}</ArticleTitle>
             </div>
-            <ArticleDate date>{post.published_time}</ArticleDate>
+            <ArticleDate date>{el.published_time}</ArticleDate>
             <ArticleImageMarginTopDown>
               {" "}
-              <ArticleImage src={post.image} />
+              <ArticleImage src={el.image} />
             </ArticleImageMarginTopDown>
-            <ArticleBackground background={post.image} />
-            <ArticleDsc>{post.desc}</ArticleDsc>
+            <ArticleBackground background={el.image} />
+            <ArticleDsc>{el.desc}</ArticleDsc>
             <MoreBtn>
               <MoreBtnBox>기사보기+</MoreBtnBox>
             </MoreBtn>
@@ -31,7 +31,7 @@ const Posts = ({ posts, loading }) => {
   ))
 }
 
-export default Posts
+export default El
 
 const ArticleLayout = styled.article`
   max-width: 759px;

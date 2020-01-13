@@ -1,11 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 
-const Posts = ({ posts, loading }) => {
-  if (loading) {
-    return <h2>Loading...</h2>
-  }
+const Posts = (props) => {
+  const moreVeiw = props.CommerceArray
+  const MoreVeiw1 = props.CommerceArray1
 
+  if (moreVeiw === undefined) return <></>
   return (
     <WidgetWrap>
       <RecommendationLayout>
@@ -15,7 +15,7 @@ const Posts = ({ posts, loading }) => {
         <TableListWrap>
           <TableList>
             <Table>
-              {posts.map((post) => (
+              {moreVeiw.map((post) => (
                 <TableContent key={post.id} className="listGroupItem">
                   <ThumbnailLink href={post.url}>
                     <ThumbnailWrap>
