@@ -35,7 +35,7 @@ export default El
 
 const ArticleLayout = styled.article`
   max-width: 759px;
-  margin: 50px auto;
+  margin: 200px auto;
   text-align: center;
   position: relative;
 `

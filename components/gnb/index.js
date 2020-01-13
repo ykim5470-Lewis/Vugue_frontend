@@ -26,14 +26,14 @@ class Gnb extends Component {
     window.removeEventListener("resize", this.onResizeHandle)
     window.removeEventListener("scroll", this.onScrollHandle)
   }
-  onResizeHandle = (e) => {
+  onResizeHandle = () => {
     if (document.body.offsetWidth < 786) {
       this.setState({ wideScreen: false, wheel: true })
     } else {
       this.setState({ wideScreen: true })
     }
   }
-  onScrollHandle = (e) => {
+  onScrollHandle = () => {
     if (window.scrollY >= 30 && this.state.wideScreen) {
       this.setState({ wheel: true })
     } else if (this.state.wideScreen) {
@@ -46,6 +46,9 @@ class Gnb extends Component {
     } else if (action === "MouseOut") {
       this.setState({ mouse: false })
     }
+  }
+  onClickMoveTop = () => {
+    window.scrollTo(0, 0)
   }
 
   render() {
@@ -76,7 +79,11 @@ class Gnb extends Component {
                     <SideMenuModalItem>개인정보 처리방침</SideMenuModalItem>
                   </SideMenuModal>
                 </SideMenu>
-                <Subscribe>Sign UP</Subscribe>
+                <Link href="/SignIn">
+                  <a>
+                    <Subscribe>Sign In</Subscribe>
+                  </a>
+                </Link>
               </TopRight>
             </Top>
             <Logo
@@ -95,13 +102,12 @@ class Gnb extends Component {
           </Container>
         </Header>
         <SmallGnb display={!wideScreen}></SmallGnb>
-        <Link href="/">
-          <a>
-            <BtnContainer display={wheel ? "block" : "none"}>
-              <MoveTopBtn></MoveTopBtn>
-            </BtnContainer>
-          </a>
-        </Link>
+        <BtnContainer
+          display={wheel ? "block" : "none"}
+          onClick={this.onClickMoveTop}
+        >
+          <MoveTopBtn></MoveTopBtn>
+        </BtnContainer>
       </>
     )
   }
@@ -109,7 +115,7 @@ class Gnb extends Component {
 const Header = styled.header`
   border-bottom: 1px solid #747474;
   background-color: white;
-  box-shadow: 0 4px 2px -2px gray;
+  box-shadow: 0px 0px 6px -2px #747474;
   position: fixed;
   top: 0;
   width: 100%;

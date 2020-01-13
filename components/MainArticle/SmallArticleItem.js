@@ -1,27 +1,34 @@
 import { Component } from "react"
 import styled from "styled-components"
 import Link from "next/link"
+import {
+  CommonArticleWrap,
+  CommonArticleOutBorder,
+  CommonArticleInBorder,
+  CommonArticleImage,
+  CommonArticleTitle
+} from "../../styles/Common"
 
 class SmallArticleItem extends Component {
   render() {
     const { id, title, imageUrl } = this.props.data
     console.log(imageUrl)
     return (
-      <Wrap>
-        <OuterBorder>
+      <SmallArticleWrap>
+        <SmallArticleOutBorder>
           <Link href={`/SubPage/SubPage${id}`}>
             <a>
-              <InnerBorder></InnerBorder>
-              <Image imageUrl={imageUrl}></Image>
-              <ArticleTitle>{title}</ArticleTitle>
+              <CommonArticleInBorder></CommonArticleInBorder>
+              <SmallArticleImage imageUrl={imageUrl}></SmallArticleImage>
+              <CommonArticleTitle>{title}</CommonArticleTitle>
             </a>
           </Link>
-        </OuterBorder>
-      </Wrap>
+        </SmallArticleOutBorder>
+      </SmallArticleWrap>
     )
   }
 }
-const Wrap = styled.div`
+const SmallArticleWrap = styled(CommonArticleWrap)`
   display: inline-block;
   width: 395px;
   height: 650px;
@@ -35,42 +42,16 @@ const Wrap = styled.div`
     transition: 1s;
   }
 `
-const OuterBorder = styled.div`
-  position: relative;
+const SmallArticleOutBorder = styled(CommonArticleOutBorder)`
   height: 100%;
-`
-const InnerBorder = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  &:hover {
-    border: 13px solid rgba(255, 0, 0);
-    transition: 0.5s;
-  }
 `
 
-const Image = styled.div`
-  background-image: url(${(props) => props.imageUrl});
-  background-size: cover;
-  background-position: 50% 50%;
-  width: 100%;
-  height: 100%;
+const SmallArticleImage = styled(CommonArticleImage)`
   @media (max-width: 800px) {
-    background-size: fill;
+    background-size: cover;
+    background-position: 0 0;
+    background-repeat: no-repeat;
   }
-`
-const ArticleTitle = styled.div`
-  width: 100%;
-  padding: 10px;
-  position: absolute;
-  bottom: 10%;
-  text-align: center;
-  z-index: 999;
-  font-size: 33px;
-  color: #fff;
-  font-weight: 400;
 `
 
 export default SmallArticleItem
