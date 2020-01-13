@@ -84,6 +84,7 @@ const Wrap = styled.div`
   position: ${(props) => props.position};
   top: 0;
   width: 100%;
+  z-index: 999;
   background-color: white;
 `
 const Container = styled.div`

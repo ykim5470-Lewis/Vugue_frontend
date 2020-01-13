@@ -113,6 +113,7 @@ const Header = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 999;
   @media all and (max-width: 800px) {
     display: none;
     height: 50px;

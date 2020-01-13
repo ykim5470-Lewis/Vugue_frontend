@@ -10,7 +10,5 @@ const Layout = (props) => (
     <Footer />
   </Wrap>
 )
-const Wrap = styled.div`
-  height: 2000px;
-`
+const Wrap = styled.div``
 export default Layout
