@@ -8,6 +8,7 @@ const NavWrap = styled.nav`
   justify-content: center;
 `
 
+// postsPerPage는 limit이고 totalPosts는 imtes 이고 paginate는
 const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   const pageNumbers = []
 

@@ -23,3 +23,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+#.file은 hidden file이니 무조건 gitignore에 추가 해주어야 한다. 

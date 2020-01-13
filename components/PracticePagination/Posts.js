@@ -1,39 +1,46 @@
 import React from "react"
 import styled from "styled-components"
 
-const Posts = ({ posts, loading }) => {
-  if (loading) {
-    return <h2>Loading...</h2>
-  }
+const Posts = (props) => {
+  const moreVeiw = props.CommerceArray
+  const MoreVeiw1 = props.CommerceArray1
 
+  if (moreVeiw === undefined) return <></>
   return (
-    <WidgetWrap>
-      <RecommendationLayout>
-        <InterestedPostTitle>
-          <PostTitle>주의 깊게 읽은 기사</PostTitle>
-        </InterestedPostTitle>
-        <TableListWrap>
-          <TableList>
-            <Table>
-              {posts.map((post) => (
-                <TableContent key={post.id} className="listGroupItem">
-                  <ThumbnailLink href={post.url}>
-                    <ThumbnailWrap>
-                      <Thumbnail src={post.image} />
-                      <ThumbnailTitle>{post.title}</ThumbnailTitle>
-                    </ThumbnailWrap>
-                  </ThumbnailLink>
-                </TableContent>
-              ))}
-            </Table>
-          </TableList>
-        </TableListWrap>
-      </RecommendationLayout>
-    </WidgetWrap>
+    <M_auto>
+      <WidgetWrap>
+        <RecommendationLayout>
+          <InterestedPostTitle>
+            <PostTitle>주의 깊게 읽은 기사</PostTitle>
+          </InterestedPostTitle>
+          <TableListWrap>
+            <TableList>
+              <Table>
+                {moreVeiw.map((post) => (
+                  <TableContent key={post.id} className="listGroupItem">
+                    <ThumbnailLink href={post.url}>
+                      <ThumbnailWrap>
+                        <Thumbnail src={post.image} />
+                        <ThumbnailTitle>{post.title}</ThumbnailTitle>
+                      </ThumbnailWrap>
+                    </ThumbnailLink>
+                  </TableContent>
+                ))}
+              </Table>
+            </TableList>
+          </TableListWrap>
+        </RecommendationLayout>
+      </WidgetWrap>
+    </M_auto>
   )
 }
 
 export default Posts
+
+const M_auto = styled.div`
+  max-width: 930px;
+  margin: 30px auto;
+`
 
 const WidgetWrap = styled.div`
   overflow: hidden;
@@ -44,6 +51,8 @@ const WidgetWrap = styled.div`
   background: #fff;
   font: 12px/1.2 "Apple SD Gothic Neo", "맑은 고딕", NanumGothic, "돋움", sans-serif;
   text-align: left;
+  max-width: 930px;
+  margin: 30px auto;
 `
 
 const RecommendationLayout = styled.div`
@@ -128,7 +137,7 @@ const Thumbnail = styled.img`
 
 const ThumbnailTitle = styled.div`
   font-size: 16px;
-  height: 20%;
+  height: 30%;
   line-height: 1.4em;
   color: #000;
   text-align: left;
