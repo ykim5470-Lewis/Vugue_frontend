@@ -4,6 +4,7 @@ import El from "../DetailPage/El"
 import Posts from "../PracticePagination/Posts"
 import El1 from "../DetailPage/El1"
 import Posts1 from "../PracticePagination/Posts1"
+import styled from "styled-components"
 
 const getDummyData = async ({ page = 18, limit = 36 } = {}) => {
   const res = await axios.get("http://localhost:3000/data/data.json")
@@ -42,6 +43,7 @@ const SubMain = () => {
 
   return (
     <>
+      <Mg_top200 />
       <El DataArray={ArticleArray} />
       <Posts CommerceArray={CommerceArray} />
       <El1 DataArray1={ArticleArray1} />
@@ -51,3 +53,7 @@ const SubMain = () => {
 }
 
 export default SubMain
+
+const Mg_top200 = styled.div`
+  margin-top: 200px;
+`

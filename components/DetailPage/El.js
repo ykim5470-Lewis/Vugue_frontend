@@ -3,10 +3,11 @@ import styled from "styled-components"
 
 const El = (props) => {
   const array = props.DataArray
+  // const array1 = props.DataArray1
   console.log(array)
 
   if (array === undefined) return <></>
-  return array.map((el) => (
+  const firstSet = array.map((el) => (
     <>
       <div itemprop="articleBody">
         <ArticleLayout id={el.id}>
@@ -29,6 +30,7 @@ const El = (props) => {
       </div>
     </>
   ))
+  return firstSet
 }
 
 export default El
