@@ -3,6 +3,7 @@ import styled from "styled-components"
 import WideArticleItem from "./WideArticleItem"
 import axios from "axios"
 import SmallArticleItem from "./SmallArticleItem"
+import { API_URL } from "../../config/Constants"
 import {
   CommonArticleWrap,
   CommonArticleOutBorder,
@@ -14,8 +15,16 @@ class MainArticle extends Component {
     scroll: false
   }
   componentDidMount() {
+    const videoData = {
+      title: "",
+      video_url:
+        "https://vod-progressive.akamaized.net/exp=1578979808~acl=%2A%2F1605764253.mp4%2A~hmac=a14d88d1b1a3b6b30a464a934bc602a7b1b0dd168165d409d7195d205d496ea7/vimeo-prod-skyfire-std-us/01/1509/15/382549314/1605764253.mp4",
+      detail_id: 1400
+    }
     const dataLoad = async () => {
-      const res = await axios.get("http://localhost:3000/data/MainData.json")
+      const res = await axios.get(`${API_URL}article/articles/ppl`)
+      //비디오 데이터 추가하기
+      res.data.data.splice(4, 0, videoData)
       this.setState({
         data: res.data.data
       })
@@ -60,18 +69,20 @@ class MainArticle extends Component {
         {this.state.data.map((curr, i) => {
           if (i === 4) {
             return (
-              <CommonArticleWrap>
-                <VideoOutBorder>
-                  <CommonArticleInBorder></CommonArticleInBorder>
-                  <Video
-                    src="https://vod-progressive.akamaized.net/exp=1578913584~acl=%2A%2F1605764253.mp4%2A~hmac=d0995d177a1eb9e37a5128871210478dd852bf5942977153d665c543e348fdbe/vimeo-prod-skyfire-std-us/01/1509/15/382549314/1605764253.mp4"
-                    muted
-                    loop
-                    autoPlay
-                    ref={(ref) => (this.videoRef = ref)}
-                  ></Video>
-                </VideoOutBorder>
-              </CommonArticleWrap>
+              <>
+                <CommonArticleWrap key={i}>
+                  <VideoOutBorder>
+                    <CommonArticleInBorder></CommonArticleInBorder>
+                    <Video
+                      src={curr.video_url}
+                      muted
+                      loop
+                      autoPlay
+                      ref={(ref) => (this.videoRef = ref)}
+                    ></Video>
+                  </VideoOutBorder>
+                </CommonArticleWrap>
+              </>
             )
           } else if (i % 4 === 0) {
             return <WideArticleItem data={curr} key={i}></WideArticleItem>
@@ -86,7 +97,7 @@ class MainArticle extends Component {
 
 const Section = styled.section`
   text-align: center;
-  margin-top: ${(props) => (props.marginTop ? "50px" : "180px")};
+  margin-top: ${(props) => (props.marginTop ? "100px" : "200px")};
   z-index: 1;
   @media (max-width: 800px) {
     margin-top: 70px;

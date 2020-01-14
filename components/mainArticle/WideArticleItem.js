@@ -11,14 +11,14 @@ import {
 
 class ArticleItem extends Component {
   render() {
-    const { id, title, imageUrl } = this.props.data
+    const { id, title, image_url } = this.props.data
     return (
       <CommonArticleWrap>
         <WideArticleOutBorder>
           <Link href={`/SubPage/SubPage${id}`}>
             <a>
               <CommonArticleInBorder></CommonArticleInBorder>
-              <CommonArticleImage imageUrl={imageUrl}></CommonArticleImage>
+              <CommonArticleImage image_url={image_url}></CommonArticleImage>
               <CommonArticleTitle>{title}</CommonArticleTitle>
             </a>
           </Link>

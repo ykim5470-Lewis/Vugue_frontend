@@ -43,7 +43,7 @@ class SmallGnb extends Component {
               height="34px"
               display="block"
             ></Logo>
-            <SearchIcon onClick={this.handleSearch}></SearchIcon>
+            <SmallSearchIcon onClick={this.handleSearch}></SmallSearchIcon>
           </Container>
           <SearchBar display={searchClicked ? "block" : "none"}></SearchBar>
           <MoreContent display={moreClicked}>
@@ -54,7 +54,7 @@ class SmallGnb extends Component {
               <Social
                 imgUrl={curr.imgUrl}
                 link={curr.link}
-                kye={i}
+                key={i}
                 width="20px"
                 height="20px"
                 margin="30px 0px 10px 5.5%"
@@ -100,13 +100,8 @@ const More = styled.div`
   cursor: pointer;
   margin-top: 3px;
 `
-const Search = styled.div`
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdr40bUMZstelWonpxfu8FIDXVGs_h2FcSmjWw4wU4HMkCtom&s");
-  background-size: cover;
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  cursor: pointer;
+const SmallSearchIcon = styled(SearchIcon)`
+  top: 30%;
 `
 const MoreContent = styled.div`
   display: ${(props) => (props.display ? "block" : "none")};

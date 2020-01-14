@@ -4,10 +4,12 @@ import Link from "next/link"
 
 class TextMenu extends Component {
   render() {
+    const { wheel, title, searchClicked } = this.props
+    console.log(searchClicked)
     return (
       <Link href="/">
         <a>
-          <Text font={this.props.wheel ? "12px" : "16px"}>{this.props.title}</Text>
+          <Text font={wheel ? "12px" : "16px"}>{title}</Text>
         </a>
       </Link>
     )
