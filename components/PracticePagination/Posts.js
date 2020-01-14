@@ -17,10 +17,10 @@ const Posts = (props) => {
             <TableList>
               <Table>
                 {moreVeiw.map((post) => (
-                  <TableContent key={post.id} className="listGroupItem">
+                  <TableContent key={post.detail_id} className="listGroupItem">
                     <ThumbnailLink href={post.url}>
                       <ThumbnailWrap>
-                        <Thumbnail src={post.image} />
+                        <Thumbnail src={post.image_url} />
                         <ThumbnailTitle>{post.title}</ThumbnailTitle>
                       </ThumbnailWrap>
                     </ThumbnailLink>
@@ -138,7 +138,7 @@ const Thumbnail = styled.img`
 const ThumbnailTitle = styled.div`
   font-size: 16px;
   height: 30%;
-  line-height: 1.4em;
+  /* line-height: 1.4em; */
   color: #000;
   text-align: left;
   font-family: Roboto, "Nanum Barun Gothic", "Apple SD Gothic Neo", Sans-serif, Dotum,

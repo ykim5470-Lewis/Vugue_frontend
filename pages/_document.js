@@ -1,7 +1,8 @@
 import React from "react"
 import NextDocument from "next/document"
 import { ServerStyleSheet } from "styled-components"
-export default class Document extends NextDocument {
+
+class Document extends NextDocument {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet()
     const originalRenderPage = ctx.renderPage
@@ -25,3 +26,29 @@ export default class Document extends NextDocument {
     }
   }
 }
+
+class MyDocument extends Document {
+  render() {
+    const { nextStyle } = this.props
+
+    return (
+      <html>
+        <Head>{nextStyle.tag}</Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </html>
+    )
+  }
+}
+
+MyDocument.getInitialProps = function(ctx) {
+  const props = Document.getInitialProps(ctx)
+
+  props.nextStyle = flush()
+
+  return props
+}
+
+export default Document

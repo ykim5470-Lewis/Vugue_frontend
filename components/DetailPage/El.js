@@ -9,18 +9,18 @@ const El = (props) => {
   return array.map((el) => (
     <>
       <div itemprop="articleBody">
-        <ArticleLayout id={el.id}>
+        <ArticleLayout id={el.detail_id}>
           <ArticleUrlLink href={el.url}>
-            <div key={el.id}>
+            <div key={el.detail_id}>
               <ArticleTitle>{el.title}</ArticleTitle>
             </div>
-            <ArticleDate date>{el.published_time}</ArticleDate>
+            <ArticleDate date>{el.caption_date}</ArticleDate>
             <ArticleImageMarginTopDown>
               {" "}
-              <ArticleImage src={el.image} />
+              <ArticleImage src={el.image_url} />
             </ArticleImageMarginTopDown>
-            <ArticleBackground background={el.image} />
-            <ArticleDsc>{el.desc}</ArticleDsc>
+            <ArticleBackground background={el.image_url} />
+            <ArticleDsc>{el.caption}</ArticleDsc>
             <MoreBtn>
               <MoreBtnBox>기사보기+</MoreBtnBox>
             </MoreBtn>
