@@ -1,37 +1,37 @@
 import React from "react"
 import styled from "styled-components"
 
-const El = (props) => {
-  const array = props.DataArray
+const MoreArticle = (props) => {
+  let array = props.DataArray
+  if (!array) {
+    array = props.DataArray1
+  }
   console.log(array)
 
-  if (array === undefined) return <></>
+  if (!array) return <></>
   return array.map((el) => (
-    <>
-      <div itemprop="articleBody">
-        <ArticleLayout id={el.id}>
-          <ArticleUrlLink href={el.url}>
-            <div key={el.id}>
-              <ArticleTitle>{el.title}</ArticleTitle>
-            </div>
-            <ArticleDate date>{el.published_time}</ArticleDate>
-            <ArticleImageMarginTopDown>
-              {" "}
-              <ArticleImage src={el.image} />
-            </ArticleImageMarginTopDown>
-            <ArticleBackground background={el.image} />
-            <ArticleDsc>{el.desc}</ArticleDsc>
-            <MoreBtn>
-              <MoreBtnBox>기사보기+</MoreBtnBox>
-            </MoreBtn>
-          </ArticleUrlLink>
-        </ArticleLayout>
-      </div>
-    </>
+    <div itemprop="articleBody">
+      <ArticleLayout id={el.detail_id}>
+        <ArticleUrlLink href={el.url}>
+          <div key={el.detail_id}>
+            <ArticleTitle>{el.title}</ArticleTitle>
+          </div>
+          <ArticleDate date>{el.caption_date}</ArticleDate>
+          <ArticleImageMarginTopDown>
+            <ArticleImage src={el.image_url} />
+          </ArticleImageMarginTopDown>
+          <ArticleBackground background={el.image_url} />
+          <ArticleDsc>{el.caption}</ArticleDsc>
+          <MoreBtn>
+            <MoreBtnBox>기사보기+</MoreBtnBox>
+          </MoreBtn>
+        </ArticleUrlLink>
+      </ArticleLayout>
+    </div>
   ))
 }
 
-export default El
+export default MoreArticle
 
 const ArticleLayout = styled.article`
   max-width: 759px;

@@ -2,10 +2,13 @@ import React from "react"
 import styled from "styled-components"
 
 const Posts = (props) => {
-  const moreVeiw = props.CommerceArray
-  const MoreVeiw1 = props.CommerceArray1
+  let moreView = props.CommerceArray
+  if (!moreView) {
+    moreView = props.CommerceArray1
+  }
 
-  if (moreVeiw === undefined) return <></>
+  if (moreView === undefined) return <></>
+
   return (
     <M_auto>
       <WidgetWrap>
@@ -16,11 +19,11 @@ const Posts = (props) => {
           <TableListWrap>
             <TableList>
               <Table>
-                {moreVeiw.map((post) => (
-                  <TableContent key={post.id} className="listGroupItem">
+                {moreView.map((post) => (
+                  <TableContent key={post.detail_id} className="listGroupItem">
                     <ThumbnailLink href={post.url}>
                       <ThumbnailWrap>
-                        <Thumbnail src={post.image} />
+                        <Thumbnail src={post.image_url} />
                         <ThumbnailTitle>{post.title}</ThumbnailTitle>
                       </ThumbnailWrap>
                     </ThumbnailLink>
@@ -138,7 +141,7 @@ const Thumbnail = styled.img`
 const ThumbnailTitle = styled.div`
   font-size: 16px;
   height: 30%;
-  line-height: 1.4em;
+  /* line-height: 1.4em; */
   color: #000;
   text-align: left;
   font-family: Roboto, "Nanum Barun Gothic", "Apple SD Gothic Neo", Sans-serif, Dotum,
