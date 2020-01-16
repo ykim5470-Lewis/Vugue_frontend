@@ -5,29 +5,26 @@ const El = (props) => {
   const array = props.DataArray
   console.log(array)
 
-  if (array === undefined) return <></>
+  if (!array) return <></>
   return array.map((el) => (
-    <>
-      <div itemprop="articleBody">
-        <ArticleLayout id={el.detail_id}>
-          <ArticleUrlLink href={el.url}>
-            <div key={el.detail_id}>
-              <ArticleTitle>{el.title}</ArticleTitle>
-            </div>
-            <ArticleDate date>{el.caption_date}</ArticleDate>
-            <ArticleImageMarginTopDown>
-              {" "}
-              <ArticleImage src={el.image_url} />
-            </ArticleImageMarginTopDown>
-            <ArticleBackground background={el.image_url} />
-            <ArticleDsc>{el.caption}</ArticleDsc>
-            <MoreBtn>
-              <MoreBtnBox>기사보기+</MoreBtnBox>
-            </MoreBtn>
-          </ArticleUrlLink>
-        </ArticleLayout>
-      </div>
-    </>
+    <div itemprop="articleBody">
+      <ArticleLayout id={el.detail_id}>
+        <ArticleUrlLink href={el.url}>
+          <div key={el.detail_id}>
+            <ArticleTitle>{el.title}</ArticleTitle>
+          </div>
+          <ArticleDate date>{el.caption_date}</ArticleDate>
+          <ArticleImageMarginTopDown>
+            <ArticleImage src={el.image_url} />
+          </ArticleImageMarginTopDown>
+          <ArticleBackground background={el.image_url} />
+          <ArticleDsc>{el.caption}</ArticleDsc>
+          <MoreBtn>
+            <MoreBtnBox>기사보기+</MoreBtnBox>
+          </MoreBtn>
+        </ArticleUrlLink>
+      </ArticleLayout>
+    </div>
   ))
 }
 

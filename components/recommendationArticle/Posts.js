@@ -6,6 +6,7 @@ const Posts = (props) => {
   const MoreVeiw1 = props.CommerceArray1
 
   if (moreVeiw === undefined) return <></>
+
   return (
     <M_auto>
       <WidgetWrap>
