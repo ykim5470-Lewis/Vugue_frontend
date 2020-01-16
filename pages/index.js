@@ -1,17 +1,19 @@
-import React from "react"
+import React, { Component } from "react"
 import { globalStyles } from "../reset/Styles"
 import Layout from "../components/Layout"
-import styled from "styled-components"
+import MainArticle from "../components/mainArticle"
 
-const Home = () => (
-  <>
-    <style type="text/css">{globalStyles}</style>
-    <Layout>
-      <Content>메인컨텐츠</Content>
-    </Layout>
-  </>
-)
-const Content = styled.div`
-  margin-top: 100px;
-`
+class Home extends Component {
+  render() {
+    return (
+      <>
+        <style type="text/css">{globalStyles}</style>
+        <Layout>
+          <MainArticle></MainArticle>
+        </Layout>
+      </>
+    )
+  }
+}
+
 export default Home

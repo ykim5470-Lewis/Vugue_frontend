@@ -19,7 +19,7 @@ class Footer extends Component {
 export default Footer
 
 const Container = styled.footer`
-  max-width: 1300px;
+  max-width: 1185px;
   background-color: #000;
   text-align: center;
   padding: 4%;

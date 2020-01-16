@@ -4,6 +4,7 @@ import styled from "styled-components"
 import TextMenu from "./TextMenu"
 import Social from "./Social"
 import SmallGnb from "./SmallGnb"
+import SearchBar from "./SearchBar"
 import { Logo, Menu, SearchIcon } from "../../styles/Common"
 import { LOGO_URL, SOCIAL_LOGO } from "../../config"
 
@@ -11,7 +12,8 @@ class Gnb extends Component {
   state = {
     mouse: false,
     wheel: false,
-    wideScreen: true
+    wideScreen: true,
+    searchClicked: false
   }
   componentDidMount() {
     //작은화면에서 랜더링시 큰화면 Gnb 랜더링 방지
@@ -22,10 +24,12 @@ class Gnb extends Component {
     window.addEventListener("resize", this.onResizeHandle)
     window.addEventListener("scroll", this.onScrollHandle)
   }
+
   componentWillUnmount() {
     window.removeEventListener("resize", this.onResizeHandle)
     window.removeEventListener("scroll", this.onScrollHandle)
   }
+
   onResizeHandle = (e) => {
     if (document.body.offsetWidth < 786) {
       this.setState({ wideScreen: false, wheel: true })
@@ -33,6 +37,7 @@ class Gnb extends Component {
       this.setState({ wideScreen: true })
     }
   }
+
   onScrollHandle = (e) => {
     if (window.scrollY >= 30 && this.state.wideScreen) {
       this.setState({ wheel: true })
@@ -40,6 +45,7 @@ class Gnb extends Component {
       this.setState({ wheel: false })
     }
   }
+
   onMouseHandle = (action) => {
     if (action === "MouseOver") {
       this.setState({ mouse: true })
@@ -48,16 +54,28 @@ class Gnb extends Component {
     }
   }
 
+  onSearchHandle = () => {
+    if (this.state.searchClicked) {
+      this.setState({ searchClicked: false })
+    } else {
+      this.setState({ searchClicked: true })
+    }
+  }
+
   render() {
-    const { mouse, wheel, wideScreen } = this.state
+    const { mouse, wheel, wideScreen, searchClicked } = this.state
     return (
       <>
+        <Overlay
+          display={searchClicked ? "block" : "none"}
+          onClick={this.onSearchHandle}
+        ></Overlay>
         <Header>
           <Container>
             <Top display={wheel ? "none" : "flex"}>
               <TopLeft>
                 {SOCIAL_LOGO.map((curr, i) => (
-                  <Social imgUrl={curr.imgUrl} link={curr.link} kye={i} />
+                  <Social imgUrl={curr.imgUrl} link={curr.link} key={i} />
                 ))}
               </TopLeft>
               <TopRight>
@@ -83,14 +101,27 @@ class Gnb extends Component {
               display={wheel ? "none" : "block"}
               width="400px"
               height="104px"
-              margin=" 0 auto"
+              margin=" 10px auto"
             />
             <SamllLogo display={wheel && wideScreen ? "block" : "none"} />
             <Bottom>
               {Menu.map((curr, i) => (
-                <TextMenu key={i} title={curr} wheel={wheel} />
+                <TextMenu
+                  key={i}
+                  title={curr}
+                  wheel={wheel}
+                  searchClicked={searchClicked}
+                />
               ))}
-              <SearchIcon />
+              <SearchBar
+                display={searchClicked ? "inline-block" : "none"}
+                width="300px"
+                margin="0"
+              ></SearchBar>
+              <SearchIcon
+                onClick={this.onSearchHandle}
+                display={this.state.searchClicked ? "none" : "block"}
+              />
             </Bottom>
           </Container>
         </Header>
@@ -113,6 +144,7 @@ const Header = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 100;
   @media all and (max-width: 800px) {
     display: none;
     height: 50px;
@@ -182,17 +214,22 @@ const SamllLogo = styled(Logo)`
 const Bottom = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  transform: translateX(-45px);
+  transition: 2s;
   @media all and (max-width: 800px) {
     display: none;
   }
 `
-const Search = styled.div`
-  background-image: url("https://data.silhouette-ac.com/data/thumbnails/86/86f7e9c427feacc8cbb8e76ecf04b0cc_t.jpeg");
-  background-size: cover;
-  width: 20px;
-  height: 20px;
-  transform: translateY(55%);
-  cursor: pointer;
+const Overlay = styled.div`
+  display: ${(props) => props.display || "none"};
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0);
 `
 const BtnContainer = styled.div`
   width: 50px;
