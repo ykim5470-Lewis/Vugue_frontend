@@ -1,7 +1,9 @@
 import axios from "axios"
 import React, { useState, useEffect } from "react"
+
 import MoreArticle from "../moreArticle/MoreArticle"
 import RecommendationArticle from "../recommendationArticle/RecommendationArticle"
+
 import style from "styled-components"
 import Layout from "../Layout"
 
@@ -33,6 +35,7 @@ const SubMain = (props) => {
     let d = d1.filter((items) => !Join_Find_Code.includes(items))
     // console.log(d)
     let e = d.join(" ").replace(/data-lazy-src/g, "src")
+
     return e
   }
   //위에서 keylock decoding한 것 처럼, date정보를 삭제하고, <blockquote>의 inline style margin:1px를 0px로 바꾸기
@@ -115,6 +118,7 @@ const SubMain = (props) => {
             <div
               dangerouslySetInnerHTML={{
                 __html: `${html} 
+
               <style>
               .fusion-post-slideshow{
                 display:none;
@@ -237,6 +241,7 @@ background-color: white;
 const LoadingWrap = style.div`
   text-align: center;
 `
+
 const LoadingLogo = style.img`
 width: 200px;
 backgounrd-color: none;
@@ -255,4 +260,5 @@ padding: 0;
 color: #000;
 background-color: #f9f9f9;
 margin-top:18%;
+
 `
