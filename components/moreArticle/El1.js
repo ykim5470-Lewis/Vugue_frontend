@@ -1,26 +1,25 @@
 import React from "react"
 import styled from "styled-components"
 
-const El = (props) => {
-  const array = props.DataArray
-  console.log(array)
+const El1 = (props) => {
+  const array1 = props.DataArray1
 
-  if (array === undefined) return <></>
-  return array.map((el) => (
+  if (array1 === undefined) return <></>
+  return array1.map((el) => (
     <>
       <div itemprop="articleBody">
-        <ArticleLayout id={el.id}>
+        <ArticleLayout id={el.detail_id}>
           <ArticleUrlLink href={el.url}>
-            <div key={el.id}>
+            <div key={el.deatil_id}>
               <ArticleTitle>{el.title}</ArticleTitle>
             </div>
-            <ArticleDate date>{el.published_time}</ArticleDate>
+            <ArticleDate date>{el.caption_date}</ArticleDate>
             <ArticleImageMarginTopDown>
               {" "}
-              <ArticleImage src={el.image} />
+              <ArticleImage src={el.image_url} />
             </ArticleImageMarginTopDown>
-            <ArticleBackground background={el.image} />
-            <ArticleDsc>{el.desc}</ArticleDsc>
+            <ArticleBackground background={el.image_url} />
+            <ArticleDsc>{el.caption}</ArticleDsc>
             <MoreBtn>
               <MoreBtnBox>기사보기+</MoreBtnBox>
             </MoreBtn>
@@ -31,7 +30,7 @@ const El = (props) => {
   ))
 }
 
-export default El
+export default El1
 
 const ArticleLayout = styled.article`
   max-width: 759px;
