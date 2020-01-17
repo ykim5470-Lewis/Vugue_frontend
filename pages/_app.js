@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Head from "next/head"
 import { globalStyles } from "../reset/Styles"
 
@@ -11,6 +11,7 @@ export default function Vugue({ Component, pageProps }) {
       <Head>
         <style type="text/css">{globalStyles}</style>
         <title>Vugue</title>
+        <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
       </Head>
 
       <Layout>

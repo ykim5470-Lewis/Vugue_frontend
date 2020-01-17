@@ -2,6 +2,7 @@ import styled from "styled-components"
 import React, { Component } from "react"
 import SignSnsLogin from "./SignSnsLogin"
 import { API_URL, TOKEN } from "../../config/Constants"
+import Router from "next/router"
 // import Link from "next/link"
 // const emailRegex = RegExp(
 //   /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
@@ -43,12 +44,12 @@ export default class SignInMain extends Component {
       .then((json) => {
         const token = json.access_token
         window.localStorage.setItem(TOKEN, token)
-        //스테이트에 유저정보를 저장한다.
-        // this.setState({
-        //   name: '',
-        //   password: ''
-        // });
-        alert("로그인 성공")
+        if (token) {
+          alert("로그인 성공")
+          Router.push("/")
+        } else {
+          alert("로그인 실패")
+        }
       })
       .catch((err) => {
         console.log(err.response)
