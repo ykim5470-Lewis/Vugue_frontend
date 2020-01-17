@@ -2,10 +2,12 @@ import React from "react"
 import styled from "styled-components"
 
 const Posts = (props) => {
-  const moreVeiw = props.CommerceArray
-  const MoreVeiw1 = props.CommerceArray1
+  let moreView = props.CommerceArray
+  if (!moreView) {
+    moreView = props.CommerceArray1
+  }
 
-  if (moreVeiw === undefined) return <></>
+  if (moreView === undefined) return <></>
 
   return (
     <M_auto>
@@ -17,7 +19,7 @@ const Posts = (props) => {
           <TableListWrap>
             <TableList>
               <Table>
-                {moreVeiw.map((post) => (
+                {moreView.map((post) => (
                   <TableContent key={post.detail_id} className="listGroupItem">
                     <ThumbnailLink href={post.url}>
                       <ThumbnailWrap>
