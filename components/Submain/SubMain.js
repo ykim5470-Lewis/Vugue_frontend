@@ -310,7 +310,7 @@ const DetailWrapper = style.div`
 const Main = style.main`
 padding: 0;
 color: #000;
-background-color: #f9f9f9;
-margin-top:21%;
+background-color: white;
+margin-top:15%
 
 `

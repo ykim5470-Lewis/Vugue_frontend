@@ -35,7 +35,7 @@ export const Category = [
   },
   { id: 4, title: "PEOPLE", subCategory: [] },
   { id: 5, title: "VIDEO", subCategory: [] },
-  { id: 6, title: "RUNWAY", subCategory: [] }
+  { id: 6, title: "NEWPOST", subCategory: [] }
 ]
 
 export const Logo = styled.div`

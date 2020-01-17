@@ -17,7 +17,7 @@ const SubCategoryPage = () => {
   const title = queryId.slice(0, queryId.length - 1)
   const dataLoad = async () => {
     const res = await axios.get(
-      `${API_URL}article/${id}?tag_id=${subId}&offset=0&limit=${counter}`
+      `${API_URL}/article/${id}?tag_id=${subId}&offset=0&limit=${counter}`
     )
     setCategoryData(res.data.data)
   }

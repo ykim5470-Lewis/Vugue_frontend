@@ -4,23 +4,25 @@ import SignUpTit from "../components/SignUp/SignUpTit"
 import BaseInfoBox from "../components/SginUpTwo/BaseInfoBox"
 import Footer from "../components/footer/index"
 import Header from "../components/signNav/SignHeader"
+import { CommonSection } from "../styles/Common"
 class FinalSignUp extends Component {
   render() {
     return (
-      <Container>
-        <Header></Header>
-        <Contents>
-          <LocationWrap>
-            <ContentsBox>
-              <JoinAgreementWrap>
-                <SignUpTit />
-                <BaseInfoBox />
-              </JoinAgreementWrap>
-            </ContentsBox>
-          </LocationWrap>
-        </Contents>
-        <Footer></Footer>
-      </Container>
+      <CommonSection>
+        <Container>
+          <Contents>
+            <LocationWrap>
+              <ContentsBox>
+                <JoinAgreementWrap>
+                  <SignUpTit />
+                  <BaseInfoBox />
+                </JoinAgreementWrap>
+              </ContentsBox>
+            </LocationWrap>
+          </Contents>
+          <Footer></Footer>
+        </Container>
+      </CommonSection>
     )
   }
 }
