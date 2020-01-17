@@ -4,10 +4,9 @@ import Link from "next/link"
 
 class TextMenu extends Component {
   render() {
-    const { wheel, title, searchClicked } = this.props
-    console.log(searchClicked)
+    const { wheel, title, id } = this.props
     return (
-      <Link href="/">
+      <Link href="/category/[id]" as={`/category/${title}${id}`}>
         <a>
           <Text font={wheel ? "12px" : "16px"}>{title}</Text>
         </a>
@@ -23,6 +22,9 @@ const Text = styled.span`
   text-align: left;
   padding-right: 45px;
   color: black;
+  &:hover {
+    color: red;
+  }
 `
 
 export default TextMenu

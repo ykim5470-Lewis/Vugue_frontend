@@ -5,7 +5,7 @@ import TextMenu from "./TextMenu"
 import Social from "./Social"
 import SmallGnb from "./SmallGnb"
 import SearchBar from "./SearchBar"
-import { Logo, Menu, SearchIcon } from "../../styles/Common"
+import { Logo, Category, SearchIcon } from "../../styles/Common"
 import { LOGO_URL, SOCIAL_LOGO } from "../../config"
 
 class Gnb extends Component {
@@ -19,6 +19,8 @@ class Gnb extends Component {
     //작은화면에서 랜더링시 큰화면 Gnb 랜더링 방지
     if (document.body.offsetWidth < 786) {
       this.setState({ wideScreen: false, wheel: true })
+    } else {
+      this.setState({ wideScreen: true })
     }
 
     window.addEventListener("resize", this.onResizeHandle)
@@ -61,6 +63,9 @@ class Gnb extends Component {
       this.setState({ searchClicked: true })
     }
   }
+  moveTop = () => {
+    window.scrollTo(0, 0)
+  }
 
   render() {
     const { mouse, wheel, wideScreen, searchClicked } = this.state
@@ -94,24 +99,32 @@ class Gnb extends Component {
                     <SideMenuModalItem>개인정보 처리방침</SideMenuModalItem>
                   </SideMenuModal>
                 </SideMenu>
-                <Subscribe>Sign UP</Subscribe>
+                <Link href="SignIn">
+                  <a>
+                    <Subscribe>Sign IN</Subscribe>
+                  </a>
+                </Link>
+                <Link href="Register">
+                  <a>
+                    <Subscribe>Register Post</Subscribe>
+                  </a>
+                </Link>
               </TopRight>
             </Top>
-            <Logo
-              display={wheel ? "none" : "block"}
-              width="400px"
-              height="104px"
-              margin=" 10px auto"
-            />
+            <Link href="/">
+              <a>
+                <Logo
+                  display={wheel ? "none" : "block"}
+                  width="400px"
+                  height="104px"
+                  margin=" 10px auto"
+                />
+              </a>
+            </Link>
             <SamllLogo display={wheel && wideScreen ? "block" : "none"} />
             <Bottom>
-              {Menu.map((curr, i) => (
-                <TextMenu
-                  key={i}
-                  title={curr}
-                  wheel={wheel}
-                  searchClicked={searchClicked}
-                />
+              {Category.map((curr, i) => (
+                <TextMenu key={i} title={curr.title} id={curr.id} wheel={wheel} />
               ))}
               <SearchBar
                 display={searchClicked ? "inline-block" : "none"}
@@ -126,13 +139,9 @@ class Gnb extends Component {
           </Container>
         </Header>
         <SmallGnb display={!wideScreen}></SmallGnb>
-        <Link href="/">
-          <a>
-            <BtnContainer display={wheel ? "block" : "none"}>
-              <MoveTopBtn></MoveTopBtn>
-            </BtnContainer>
-          </a>
-        </Link>
+        <BtnContainer display={wheel ? "block" : "none"} onClick={this.moveTop}>
+          <MoveTopBtn></MoveTopBtn>
+        </BtnContainer>
       </>
     )
   }
@@ -215,7 +224,7 @@ const Bottom = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateX(-45px);
+  /*transform: translateX(-45px);*/
   transition: 2s;
   @media all and (max-width: 800px) {
     display: none;
@@ -241,6 +250,7 @@ const BtnContainer = styled.div`
   cursor: pointer;
   border-radius: 3px;
   opacity: 0.8;
+  z-index: 9999;
   display: ${(props) => props.display || "none"};
   &:hover {
     background-color: #fe0000;

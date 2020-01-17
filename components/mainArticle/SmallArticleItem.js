@@ -1,5 +1,5 @@
 import { Component } from "react"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import Link from "next/link"
 import {
   CommonArticleWrap,
@@ -11,11 +11,12 @@ import {
 
 class SmallArticleItem extends Component {
   render() {
-    const { id, title, image_url } = this.props.data
+    const { detail_id, title, image_url } = this.props.data
+
     return (
       <SmallArticleWrap>
         <SmallArticleOutBorder>
-          <Link href={`/SubPage/SubPage${id}`}>
+          <Link href={`/Article/${detail_id}`}>
             <a>
               <CommonArticleInBorder></CommonArticleInBorder>
               <SmallArticleImage image_url={image_url}></SmallArticleImage>
@@ -27,11 +28,20 @@ class SmallArticleItem extends Component {
     )
   }
 }
+const bounce = keyframes`
+  0% {
+    transform: scale(0)
+  }
+  100% {
+    transform: scale(1)
+  }
+  `
 const SmallArticleWrap = styled(CommonArticleWrap)`
   display: inline-block;
   width: 395px;
   height: 650px;
   margin: 0 auto;
+  animation: ${bounce} 0.5s;
   @media (max-width: 1200px) {
     width: 33.333%;
   }
