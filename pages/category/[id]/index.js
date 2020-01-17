@@ -18,12 +18,15 @@ const CategoryPage = () => {
   const dataLoad = async () => {
     if (queryId === "VIDEO5") {
       const res = await axios.get(
-        `${API_URL}article/video?offset=0&limit=${counter}`
+        `${API_URL}/article/video?offset=0&limit=${counter}`
       )
       setCategoryData(res.data)
+    } else if (queryId === "NEWPOST6") {
+      const res = await axios.get(`${API_URL}/article/image`)
+      setCategoryData(res.data.data)
     } else {
       const res = await axios.get(
-        `${API_URL}article/${id}?offset=0&limit=${counter}`
+        `${API_URL}/article/${id}?offset=0&limit=${counter}`
       )
       setCategoryData(res.data.data)
     }

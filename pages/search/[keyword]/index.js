@@ -10,7 +10,7 @@ const SearchPage = () => {
   const router = useRouter()
   const searchKeyword = router.query.keyword
   const dataLoad = async () => {
-    const res = await axios.get(`${API_URL}article/search?keyword=${searchKeyword}`)
+    const res = await axios.get(`${API_URL}/article/search?keyword=${searchKeyword}`)
     setSearchData(res.data.data)
   }
   useEffect(() => {

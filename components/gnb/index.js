@@ -104,7 +104,7 @@ class Gnb extends Component {
                     <Subscribe>Sign IN</Subscribe>
                   </a>
                 </Link>
-                <Link href="Register">
+                <Link href="registration">
                   <a>
                     <Subscribe>Register Post</Subscribe>
                   </a>

@@ -4,6 +4,7 @@ import SignUpTit from "../components/SignUp/SignUpTit"
 import MemberCont from "../components/SignUp/MemberCont"
 import Footer from "../components/footer/index"
 import Header from "../components/signNav/SignHeader"
+import { CommonSection } from "../styles/Common"
 class SignUp extends Component {
   constructor(props) {
     super(props)
@@ -13,20 +14,21 @@ class SignUp extends Component {
   }
   render() {
     return (
-      <Container>
-        <Header></Header>
-        <Contents>
-          <LocationWrap>
-            <ContentsBox>
-              <JoinAgreementWrap>
-                <SignUpTit />
-                <MemberCont />
-              </JoinAgreementWrap>
-            </ContentsBox>
-          </LocationWrap>
-        </Contents>
-        <Footer></Footer>
-      </Container>
+      <CommonSection>
+        <Container>
+          <Contents>
+            <LocationWrap>
+              <ContentsBox>
+                <JoinAgreementWrap>
+                  <SignUpTit />
+                  <MemberCont />
+                </JoinAgreementWrap>
+              </ContentsBox>
+            </LocationWrap>
+          </Contents>
+          <Footer></Footer>
+        </Container>
+      </CommonSection>
     )
   }
 }

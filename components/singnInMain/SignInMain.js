@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import SignSnsLogin from "./SignSnsLogin"
 import { API_URL, TOKEN } from "../../config/Constants"
 import Router from "next/router"
-// import Link from "next/link"
+import Link from "next/link"
 // const emailRegex = RegExp(
 //   /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
 // )
@@ -127,7 +127,9 @@ export default class SignInMain extends Component {
                   <BtnSignBox>
                     <BtnSignUl>
                       <BtnSignLi>
-                        <BtnSignFirst>회원가입</BtnSignFirst>
+                        <Link href="/SignUp">
+                          <BtnSignFirst>회원가입</BtnSignFirst>
+                        </Link>
                       </BtnSignLi>
                       <BtnSignLi>
                         <BtnSign>아이디 찾기</BtnSign>

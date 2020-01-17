@@ -21,7 +21,7 @@ class MainArticle extends Component {
       detail_id: 1400
     }
     const dataLoad = async () => {
-      const res = await axios.get(`${API_URL}article/main`)
+      const res = await axios.get(`${API_URL}/article/main`)
       //비디오 데이터 추가하기
       res.data.data.splice(4, 0, videoData)
       this.setState({
