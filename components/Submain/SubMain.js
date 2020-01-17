@@ -1,10 +1,10 @@
-import axios from "axios"
-import React, { useState, useEffect } from "react"
+import axios from "./node_modules/axios"
+import React, { useState, useEffect } from "./node_modules/react"
 
 import MoreArticle from "../moreArticle/MoreArticle"
 import RecommendationArticle from "../recommendationArticle/RecommendationArticle"
 
-import style from "styled-components"
+import style from "./node_modules/styled-components"
 import Layout from "../Layout"
 
 const SubMain = (props) => {
@@ -137,15 +137,14 @@ const SubMain = (props) => {
                 font-size: 16px;
                 color: red;
               }
-              .fusion-post-title-meta-wrap h2 {
+              .entry-title {
                 font-size: 50px !important;
                 line-height: 1.2em !important;
-                font-family: 'Pistilli', 'Playfair Display', 'Nanum Barun Gothic', "Apple SD Gothic Neo", Sans-serif !important;
                 color: #000 !important;
                 max-width: 900px;
                 margin: 10px auto;
                 word-wrap: break-word;
-                font-weight: 400px
+                font-weight: 900;
               }
               .single-post .fusion-post-title-meta-wrap .fusion-meta-info {
                 border: 0;
@@ -187,6 +186,7 @@ const SubMain = (props) => {
                 color: #000;
                 line-height: 1.8em;
                 font-size: 16px;
+               
               }
               .lazy {
                 border-style: none;
@@ -198,11 +198,22 @@ const SubMain = (props) => {
                 max-width:0;
               }
               .post-content p {
-                  max-width: 700px;
-                  margin: 0 auto 40px auto;
-                  color: #000;
-                  line-height: 1.8em;
-                  font-size: 16px;
+                max-width: 700px;
+                margin: 0 auto 40px auto;
+                color: #000;
+                line-height: 1.8em;
+                font-size: 16px;
+                font-family: 'Roboto', 'Nanum Barun Gothic', "Apple SD Gothic Neo", Sans-serif, Dotum, arial !important;
+                font-weight: 600;
+              }
+              .fn{
+                display: none;
+              }
+              .rich-snippet-hidden{
+                display:none;
+              }
+              .fusion-inline-sep{
+                display:none;
               }
                 </style>
               `
@@ -211,22 +222,63 @@ const SubMain = (props) => {
           </DetailWrapper>
           <Bg_common>
             <SubLayout>
+              <Post_footer_sns>
+                <Sns>
+                  <Sns_01></Sns_01>
+                  <Sns_02></Sns_02>
+                  <Sns_03></Sns_03>
+                </Sns>
+              </Post_footer_sns>
               <RecommendationArticle CommerceArray={CommerceArray} />
               <MoreArticle DataArray={ArticleArray} />
               <RecommendationArticle CommerceArray1={CommerceArray1} />
               <MoreArticle DataArray1={ArticleArray1} />
               <RecommendationArticle CommerceArray={CommerceArray} />
+              <LoadingWrap>
+                <LoadingLogo src="/loading_logo.gif" />
+              </LoadingWrap>
             </SubLayout>
           </Bg_common>
-          <LoadingWrap>
-            <LoadingLogo src="/loading_logo.gif" />
-          </LoadingWrap>
         </Main>
       </Layout>
     </>
   )
 }
 export default SubMain
+
+const Sns_01 = style.li`
+width: 50px;
+background-position: 0 0;
+cursor: pointer;
+height: 50px;
+background-image: url("http://www.vogue.co.kr/images/img_sns.jpg");
+background-size: 300px;
+float: left;
+overflow: hidden;
+border: 1px solid #dcdcdc;
+margin-left: -1px;
+`
+
+const Sns_02 = style(Sns_01)`
+  background-position: -150px 0;
+`
+const Sns_03 = style(Sns_01)`
+background-position: -200px 0;
+`
+
+const Post_footer_sns = style.div`
+margin-bottom: 0px;
+position: relative;
+padding-bottom: 20px;
+`
+const Sns = style.ul`
+text-align: center;
+width: 153px;
+height: 52px;
+margin: 30px auto 0 auto;
+padding: 0;
+position: relative !important;
+`
 
 const Bg_common = style.div`
 background-color: #f9f9f9;
@@ -259,6 +311,6 @@ const Main = style.main`
 padding: 0;
 color: #000;
 background-color: #f9f9f9;
-margin-top:18%;
+margin-top:21%;
 
 `
