@@ -17,17 +17,17 @@ class MainArticle extends Component {
   componentDidMount() {
     const videoData = {
       title: "",
-      video_url:
-        "https://vod-progressive.akamaized.net/exp=1578979808~acl=%2A%2F1605764253.mp4%2A~hmac=a14d88d1b1a3b6b30a464a934bc602a7b1b0dd168165d409d7195d205d496ea7/vimeo-prod-skyfire-std-us/01/1509/15/382549314/1605764253.mp4",
+      video_url: "/mainVideo.mp4",
       detail_id: 1400
     }
     const dataLoad = async () => {
-      const res = await axios.get(`${API_URL}article/articles/ppl`)
+      const res = await axios.get(`${API_URL}article/main`)
       //비디오 데이터 추가하기
       res.data.data.splice(4, 0, videoData)
       this.setState({
         data: res.data.data
       })
+      console.log(this.state.data)
     }
     dataLoad()
     window.addEventListener("scroll", this.handleVideoPlay)
@@ -65,7 +65,7 @@ class MainArticle extends Component {
   render() {
     const { scroll } = this.state
     return (
-      <Section marginTop={scroll}>
+      <Section marginTop={scroll ? "100px" : "200px"}>
         {this.state.data.map((curr, i) => {
           if (i === 4) {
             return (
@@ -97,7 +97,7 @@ class MainArticle extends Component {
 
 const Section = styled.section`
   text-align: center;
-  margin-top: ${(props) => (props.marginTop ? "100px" : "200px")};
+  margin-top: ${(props) => props.marginTop || "200px"};
   z-index: 1;
   @media (max-width: 800px) {
     margin-top: 70px;
