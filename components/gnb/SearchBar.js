@@ -1,8 +1,18 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 import { SearchIcon } from "../../styles/Common"
+import Link from "next/link"
 
 class SearchBar extends Component {
+  state = {
+    value: ""
+  }
+  onChangeHandle = (e) => {
+    this.setState({
+      value: e.target.value
+    })
+    console.log(this.state.value)
+  }
   render() {
     console.log()
     return (
@@ -11,8 +21,16 @@ class SearchBar extends Component {
         margin={this.props.margin}
         width={this.props.width}
       >
-        <Input placeholder="Search ..." margin={this.props.margin}></Input>
-        <InnerSearchIcon></InnerSearchIcon>
+        <Input
+          placeholder="Search ..."
+          margin={this.props.margin}
+          onChange={this.onChangeHandle}
+        ></Input>
+        <Link href="/search" as={`/search/${this.state.value}`}>
+          <a>
+            <InnerSearchIcon></InnerSearchIcon>
+          </a>
+        </Link>
       </InputContainer>
     )
   }

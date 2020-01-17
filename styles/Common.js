@@ -1,6 +1,42 @@
 import styled from "styled-components"
 
-export const Menu = ["FASHION", "BEAUTY", "LIVING", "PEOPLE", "VIDEO", "RUNWAY"]
+export const Category = [
+  {
+    id: 1,
+    title: "FASHION",
+    subCategory: [
+      { id: 1, title: "트렌드" },
+      { id: 2, title: "쇼핑" },
+      { id: 3, title: "피플" },
+      { id: 4, title: "화보" }
+    ]
+  },
+  {
+    id: 2,
+    title: "BEAUTY",
+    subCategory: [
+      { id: 1, title: "트렌드" },
+      { id: 2, title: "쇼핑" },
+      { id: 5, title: "헬스" },
+      { id: 3, title: "피플" }
+    ]
+  },
+  {
+    id: 3,
+    title: "LIVING",
+    subCategory: [
+      { id: 6, title: "여행" },
+      { id: 7, title: "음식" },
+      { id: 8, title: "문화" },
+      { id: 9, title: "인테리어" },
+      { id: 10, title: "키즈" },
+      { id: 11, title: "테크" }
+    ]
+  },
+  { id: 4, title: "PEOPLE", subCategory: [] },
+  { id: 5, title: "VIDEO", subCategory: [] },
+  { id: 6, title: "RUNWAY", subCategory: [] }
+]
 
 export const Logo = styled.div`
   display: ${(props) => props.display || "none"};
@@ -51,8 +87,17 @@ export const CommonArticleTitle = styled.div`
   position: absolute;
   bottom: 10%;
   text-align: center;
+  padding: 10px;
   z-index: 999;
   font-size: 30px;
   color: white;
   font-weight: 400;
+`
+export const CommonSection = styled.section`
+  text-align: center;
+  margin-top: ${(props) => props.marginTop || "200px"};
+  z-index: 1;
+  @media (max-width: 800px) {
+    margin-top: 70px;
+  }
 `

@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-import styled from "styled-components"
-import { Logo, Menu, SearchIcon } from "../../styles/Common"
+import styled, { keyframes } from "styled-components"
+import { Logo, Category, SearchIcon } from "../../styles/Common"
 import { LOGO_URL, SOCIAL_LOGO } from "../../config"
 import Social from "./Social"
 import SearchBar from "./SearchBar"
@@ -46,9 +46,9 @@ class SmallGnb extends Component {
             <SmallSearchIcon onClick={this.handleSearch}></SmallSearchIcon>
           </Container>
           <SearchBar display={searchClicked ? "block" : "none"}></SearchBar>
-          <MoreContent display={moreClicked}>
-            {Menu.map((curr, i) => (
-              <MenuItem key={i}>{curr}</MenuItem>
+          <MoreContent display={moreClicked ? "block" : "none"}>
+            {Category.map((curr, i) => (
+              <MenuItem key={i}>{curr.title}</MenuItem>
             ))}
             {SOCIAL_LOGO.map((curr, i) => (
               <Social
@@ -79,6 +79,7 @@ class SmallGnb extends Component {
     )
   }
 }
+
 const Wrap = styled.div`
   display: ${(props) => (props.display ? "block" : "none")};
   position: ${(props) => props.position};
@@ -87,6 +88,7 @@ const Wrap = styled.div`
   z-index: 999;
   background-color: white;
 `
+
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
@@ -104,7 +106,7 @@ const SmallSearchIcon = styled(SearchIcon)`
   top: 30%;
 `
 const MoreContent = styled.div`
-  display: ${(props) => (props.display ? "block" : "none")};
+  display: ${(props) => props.display};
   color: #333333;
   font-size: 25px;
   width: 90%;

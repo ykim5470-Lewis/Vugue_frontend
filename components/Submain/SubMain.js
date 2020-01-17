@@ -1,10 +1,10 @@
-import axios from "./node_modules/axios"
-import React, { useState, useEffect } from "./node_modules/react"
+import axios from "axios"
+import React, { useState, useEffect } from "react"
 
 import MoreArticle from "../moreArticle/MoreArticle"
 import RecommendationArticle from "../recommendationArticle/RecommendationArticle"
 
-import style from "./node_modules/styled-components"
+import style from "styled-components"
 import Layout from "../Layout"
 
 const SubMain = (props) => {

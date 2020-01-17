@@ -1,5 +1,5 @@
-import React from "./node_modules/react"
-import { useRouter } from "./node_modules/next/router"
+import React from "react"
+import { useRouter } from "next/router"
 import SubMain from "../../../components/Submain/SubMain"
 
 Article.getInitialProps = ({ query }) => {
