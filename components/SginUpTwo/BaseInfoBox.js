@@ -3,6 +3,7 @@ import styled from "styled-components"
 import DaumPostcode from "react-daum-postcode"
 import Link from "next/link"
 import Router from "next/router"
+import { API_URL } from "../../config/Constants"
 // import next from "next"
 // import { Router } from "express"
 // import { API_URL } from "../../config"
@@ -24,9 +25,12 @@ export default class BaseInfoBox extends Component {
   //   Router.push("/")
   // }
   submitHandler = () => {
+    if (this.state.pw !== this.state.passwordCheck) {
+      return
+    }
     if (this.state.name !== undefined && this.state.pw !== undefined)
       console.log(`name:${this.state.name}\nPW:${this.state.pw}`)
-    fetch("http://10.58.3.184:8001/user", {
+    fetch(`${API_URL}/user`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -38,7 +42,15 @@ export default class BaseInfoBox extends Component {
       // 성공 시 메세지 : "SUCCESS" 를 출력
       // 실패 : 그냥 error
       .then((res) => {
-        Router.push("/SignIn")
+        if (res.message === "NAME_ALREADY_EXIST") {
+          alert("이미 등록된 이름입니다.")
+        } else if (res.message === "SUCCESS") {
+          Router.push("/SignIn")
+        } else if (res.message === "INVAILD_KEYS") {
+          alert("유효한 형식이 아닙니다.")
+        } else if ("WRONG_INPUT_VALUE") {
+          alert("잘못 입력되었습니다.")
+        }
       })
   }
 
