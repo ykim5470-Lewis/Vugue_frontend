@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
-import ImageUpload from "../components/Upload/Upload"
+import ImageUpload from "../components/upload/Upload"
 
 const Response = (props) => {
   const ImagePreview = props.Preview

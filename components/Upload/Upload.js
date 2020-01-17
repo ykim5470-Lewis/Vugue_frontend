@@ -1,5 +1,5 @@
-import React from "react"
-import Response from "../../pages/response"
+import React from "./node_modules/react"
+import Response from "../../pages/Response"
 
 class ImageUpload extends React.Component {
   constructor(props) {
